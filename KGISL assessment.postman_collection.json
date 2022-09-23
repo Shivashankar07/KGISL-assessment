@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "664e480e-159c-4316-bc4a-9b62b92f723f",
+		"name": "KGISL assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21095424"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "firstName",
+							"value": "shiva",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "shankar",
+							"type": "text"
+						},
+						{
+							"key": "userName",
+							"value": "shivass1",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "shiva2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "8870930709",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/userregistration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userregistration"
+					]
+				},
+				"description": "Registration - FirstName,LastName,UserName (unique), Email (unique), Phone Number\r\nwith country code,Password (standard regex validation to be added)"
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "shiva2@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qwerty@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/userLogin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"userLogin"
+					]
+				},
+				"description": "user login - UserName/Email with Password\r\n● In return, Access token & Refresh token to be sent\r\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get access token using refresh token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "refreshToken",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNoaXZhMkBnbWFpbC5jb20iLCJwYXNzd29yZCI6InF3ZXJ0eUAxMjMiLCJpYXQiOjE2NjM3NzM5OTJ9.x_uIw-xXgkuM8IWb-aoMz7_CKfLdoEyapQ1WiuTZII0",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "shiva2@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/getAccessToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getAccessToken"
+					]
+				},
+				"description": "New access token can be returned for a refresh token"
+			},
+			"response": []
+		},
+		{
+			"name": "Create User Profile",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"sdnkan\",\r\n    \"lastName\": \"sadsa\",\r\n    \"email\": \"shivashankar11@gmail.com\",\r\n    \"phone\": \"88709303808\",\r\n    \"c_address\": \"sadasdads\",\r\n    \"n_address\": \"dsadsa\",\r\n    \"educationDetails\":[\r\n            {\r\n                \"pass_out\": \"2017\",\r\n                \"institution\":\"sns college of engg\",\r\n                \"degree\":\"ece\",\r\n                \"percent\":\"74\"\r\n            },\r\n            {\r\n                \"pass_out\": \"2017\",\r\n                \"institution\":\"sns college of engg\",\r\n                \"degree\":\"ece\", \r\n                \"percent\":\"74\"\r\n            }\r\n    ],\r\n    \"workDetails\":[\r\n        {\r\n            \"company\":\"abx\",\r\n            \"start_date\":\"10-09-2020\",\r\n            \"end_date\":\"present\"\r\n        },\r\n        {\r\n            \"company\":\"dsa\",\r\n            \"start_date\":\"08-09-2019\",\r\n            \"end_date\":\"09-09-2020\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/createUserProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"createUserProfile"
+					]
+				},
+				"description": "creating user profile \r\nFirstName\r\n- LastName\r\n- Email\r\n- Profile Pic upload\r\n- PhoneNumber with country code\r\n- Current Address\r\n- Native Address (Can be same as current address)\r\n- Education Qualifications ( multiple)\r\n- Year Passed Out\r\n- Institution\r\n- Degree/Course\r\n- Percentage\r\n- Work Experience (multiple)\r\n- Company\r\n- Start date\r\n- End date (not required for current company)\r\n- Resume Upload"
+			},
+			"response": []
+		},
+		{
+			"name": "Update user profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"32\",\r\n    \"firstName\": \"shankar\",\r\n    \"lastName\": \"shankar\",\r\n    \"email\": \"shivashankar@gmail.com\",\r\n    \"phone\": \"88709303808\",\r\n    \"c_address\": \"sadasdads\",\r\n    \"n_address\": \"dsadsa\",\r\n    \"educationDetails\":[\r\n            {\r\n                \"pass_out\": \"2018\",\r\n                \"institution\":\"sns college of engg\",\r\n                \"degree\":\"ece\",\r\n                \"percent\":\"74\"\r\n            },\r\n            {\r\n                \"pass_out\": \"2019\",\r\n                \"institution\":\"sns college of engg\",\r\n                \"degree\":\"ece\", \r\n                \"percent\":\"74\"\r\n            }\r\n    ],\r\n    \"workDetails\":[\r\n        {\r\n            \"company\":\"qwe\",\r\n            \"start_date\":\"01-09-2020\",\r\n            \"end_date\":\"present\"\r\n        },\r\n        {\r\n            \"company\":\"dsa\",\r\n            \"start_date\":\"07-09-2019\",\r\n            \"end_date\":\"09-09-2020\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/updateUserProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"updateUserProfile"
+					]
+				},
+				"description": "updating the existing user profile"
+			},
+			"response": []
+		},
+		{
+			"name": "List user profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/listUserProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"listUserProfile"
+					]
+				},
+				"description": "listing the user profiles"
+			},
+			"response": []
+		},
+		{
+			"name": "Get user profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/getUserProfile?id=34",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"getUserProfile"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "34"
+						}
+					]
+				},
+				"description": "Get user profile"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "32",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/deleteUserProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"deleteUserProfile"
+					]
+				},
+				"description": "deleting the user profiles"
+			},
+			"response": []
+		},
+		{
+			"name": "Search user profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"searchText\":\"sdnkan\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/searchUserProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"searchUserProfile"
+					]
+				},
+				"description": "Profile Listing with pagination required, search (based on basic info), totalCount,\r\nfilteredCount\r\n"
+			},
+			"response": []
+		}
+	]
+}
